@@ -1,8 +1,9 @@
 package org.jointheleague.dogsearch.repository.dto;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.jar.Attributes;
+//import javax.annotation.Generated;
 import javax.annotation.processing.Generated;
 
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -14,16 +15,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
+        "id",
         "type",
-        "DogFacts"
+        "attributes"
 })
-public class DogDTO {
+public class DogFact {
 
+    private String id;
     private String type;
-
-    private List<DogFact> dogFacts;
-
+    private Attributes attributes;
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -33,12 +42,12 @@ public class DogDTO {
         this.type = type;
     }
 
-    public List<DogFact> getDogFacts() {
-        return dogFacts;
+    public Attributes getAttributes() {
+        return attributes;
     }
 
-    public void setDogFacts(List<DogFact> dogFacts) {
-        this.dogFacts = dogFacts;
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
     }
 
     public Map<String, Object> getAdditionalProperties() {
@@ -48,4 +57,5 @@ public class DogDTO {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
 }

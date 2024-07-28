@@ -1,12 +1,17 @@
 package org.jointheleague.dogsearch.service;
 
+import org.jointheleague.dogsearch.repository.DogInfoRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DogInfoService {
 
-    public String getResults(String query){
-        return "Searching for dogs related to " + query;
+    DogInfoRepository dir;
+
+    public List getResults(String query){
+        return dir.getResults(query);
     }
 
 }

@@ -29,7 +29,7 @@ public class DogInfoRepository {
                 .retrieve()
                 .bodyToMono(DogDTO.class)
                 .block()
-                .getData();
+                .getDogFacts();
     }
 
 }
