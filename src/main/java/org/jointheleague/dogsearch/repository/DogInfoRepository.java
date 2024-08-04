@@ -21,15 +21,15 @@ public class DogInfoRepository {
     }
 
     public List getResults(String query){
-        return webClient.get()
+        DogDTO Intermediate = webClient.get()
                 .uri(uriBuilder -> uriBuilder
                         .queryParam("limit", query)
                         .build()
                 )
                 .retrieve()
                 .bodyToMono(DogDTO.class)
-                .block()
-                .getDogFacts();
+                .block();
+                return Intermediate.getData();
     }
 
 }

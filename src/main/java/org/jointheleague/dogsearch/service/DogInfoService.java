@@ -10,6 +10,9 @@ public class DogInfoService {
 
     DogInfoRepository dir;
 
+    public DogInfoService(){
+        dir = new DogInfoRepository();
+    }
     public List getResults(String query){
         return dir.getResults(query);
     }

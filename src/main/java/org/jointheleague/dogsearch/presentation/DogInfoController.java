@@ -2,7 +2,8 @@ package org.jointheleague.dogsearch.presentation;
 
 
 import org.jointheleague.dogsearch.repository.DogInfoRepository;
-import org.jointheleague.dogsearch.repository.dto.DogFact;
+//import org.jointheleague.dogsearch.repository.dto.DogFact;
+import org.jointheleague.dogsearch.repository.dto.Datum;
 import org.jointheleague.dogsearch.service.DogInfoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
@@ -24,11 +25,11 @@ public class DogInfoController {
 
     @GetMapping("/searchLocResults")
     public List getResults(@RequestParam(value="q") String query){
-    List<DogFact> dogFacts = dis.getResults(query);
-        if(CollectionUtils.isEmpty(dogFacts)){
+    List<Datum> data = dis.getResults(query);
+        if(CollectionUtils.isEmpty(data)){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result(s) not found.");
         }
-        return dogFacts;
+        return data;
 }
 
 }

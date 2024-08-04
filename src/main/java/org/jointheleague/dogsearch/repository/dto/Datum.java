@@ -1,7 +1,5 @@
 package org.jointheleague.dogsearch.repository.dto;
-
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 //import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -13,26 +11,53 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import javax.annotation.processing.Generated;
 
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "data"
+        "id",
+        "type",
+        "attributes"
 })
 @Generated("jsonschema2pojo")
-public class DogDTO {
+public class Datum {
 
-    @JsonProperty("data")
-    private List<Datum> data;
+    @JsonProperty("id")
+    private String id;
+    @JsonProperty("type")
+    private String type;
+    @JsonProperty("attributes")
+    private Attributes attributes;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-    @JsonProperty("data")
-    public List<Datum> getData() {
-        return data;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("data")
-    public void setData(List<Datum> data) {
-        this.data = data;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("attributes")
+    public Attributes getAttributes() {
+        return attributes;
+    }
+
+    @JsonProperty("attributes")
+    public void setAttributes(Attributes attributes) {
+        this.attributes = attributes;
     }
 
     @JsonAnyGetter
