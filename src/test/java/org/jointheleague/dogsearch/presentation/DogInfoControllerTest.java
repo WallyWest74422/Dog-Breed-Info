@@ -3,6 +3,7 @@ package org.jointheleague.dogsearch.presentation;
 import org.jointheleague.dogsearch.presentation.DogInfoController;
 //import org.jointheleague.dogsearch.repository.dto.DogFact;
 import org.jointheleague.dogsearch.repository.dto.Datum;
+import org.jointheleague.dogsearch.repository.dto.DogFact;
 import org.jointheleague.dogsearch.service.DogInfoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,14 +32,14 @@ public class DogInfoControllerTest {
     void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
         //given
         String query = "Java";
-        Datum datum = new Datum();
-        List<Datum> expectedResults = Collections.singletonList(datum);
+        DogFact dogFact = new DogFact();
+        List<DogFact> expectedResults = Collections.singletonList(dogFact);
 
         when(dogInfoService.getResults(query))
                 .thenReturn(expectedResults);
 
         //when
-        List<Datum> actualResults = dogInfoController.getResults(query);
+        List<DogFact> actualResults = dogInfoController.getResults(query);
 
         //then
         assertEquals(expectedResults, actualResults);

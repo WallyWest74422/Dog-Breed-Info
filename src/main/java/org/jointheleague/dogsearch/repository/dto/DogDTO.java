@@ -21,17 +21,17 @@ import javax.annotation.processing.Generated;
 public class DogDTO {
 
     @JsonProperty("data")
-    private List<Datum> data;
+    private List<DogFact> data;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
     @JsonProperty("data")
-    public List<Datum> getData() {
+    public List<DogFact> getData() {
         return data;
     }
 
     @JsonProperty("data")
-    public void setData(List<Datum> data) {
+    public void setData(List<DogFact> data) {
         this.data = data;
     }
 
