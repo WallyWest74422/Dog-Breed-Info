@@ -7,13 +7,13 @@ import org.jointheleague.dogsearch.repository.dto.DogFact;
 import org.jointheleague.dogsearch.service.DogInfoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static reactor.core.publisher.Mono.when;
 
 public class DogInfoControllerTest {
@@ -31,27 +31,23 @@ public class DogInfoControllerTest {
     @Test
     void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
         //given
-        String query = "Java";
-        DogFact dogFact = new DogFact();
-        List<DogFact> expectedResults = Collections.singletonList(dogFact);
-
-        when(dogInfoService.getResults(query))
-                .thenReturn(expectedResults);
-
+        String query = "3";
         //when
         List<DogFact> actualResults = dogInfoController.getResults(query);
-
         //then
-        assertEquals(expectedResults, actualResults);
+        assertTrue(actualResults.size()==3);
+        assertTrue(actualResults.get(0)!=actualResults.get(1));
+        assertTrue(actualResults.get(1)!=actualResults.get(2));
+        assertTrue(actualResults.get(0)!=actualResults.get(2));
     }
 
     @Test
-    void givenBadQuery_whenGetResults_thenThrowsException() {
+    void givenBadQuery_whenGetResults_thenThrowsException() throws WebClientResponseException{
         //given
-        String query = "Java";
+        String query = "-1";
         //when
         //then
-        Throwable exceptionThrown = assertThrows(ResponseStatusException.class, () -> dogInfoController.getResults(query));
-        assertEquals(exceptionThrown.getMessage(), "404 NOT_FOUND \"Result(s) not found.\"");
+        Throwable exceptionThrown = assertThrows(WebClientResponseException.class, () -> dogInfoController.getResults(query));
+        assertEquals(exceptionThrown.getMessage(), "500 Internal Server Error from GET https://dogapi.dog/api/v2/facts");
     }
 }

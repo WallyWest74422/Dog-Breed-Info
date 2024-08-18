@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static reactor.core.publisher.Mono.when;
 
 public class DogInfoServiceTest {
@@ -20,17 +21,13 @@ public class DogInfoServiceTest {
     @Test
     void givenGoodQuery_whenGetResults_thenReturnListOfResults() {
         //given
-        String query = "Java";
-        DogFact dogFact = new DogFact();
-        List<DogFact> expectedResults = Collections.singletonList(dogFact);
-
-        when(dogInfoService.getResults(query))
-                .thenReturn(expectedResults);
-
+        String query = "3";
         //when
         List<DogFact> actualResults = dogInfoService.getResults(query);
-
         //then
-        assertEquals(expectedResults, actualResults);
+        assertTrue(actualResults.size()==3);
+        assertTrue(actualResults.get(0)!=actualResults.get(1));
+        assertTrue(actualResults.get(1)!=actualResults.get(2));
+        assertTrue(actualResults.get(0)!=actualResults.get(2));
     }
 }
