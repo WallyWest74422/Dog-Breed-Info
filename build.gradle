@@ -19,10 +19,11 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	implementation 'org.testng:testng:7.1.0'
-	implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+	implementation 'org.junit.jupiter:junit-jupiter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework:spring-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -38,7 +39,7 @@ sourceSets {
 	}
 }
 configurations {
-	intTestImplementation.extendsFrom implementation
+	intTestImplementation.extendsFrom testImplementation
 	intTestRunTimeOnly.extendsFrom runtimeOnly
 }
 task intTest(type: Test) {
