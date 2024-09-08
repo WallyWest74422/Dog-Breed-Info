@@ -34,6 +34,7 @@ public class DogInfoRepository {
                 .retrieve()
                 .bodyToMono(DogFact.class)
                 .block();
+        System.out.println(Intermediate.getData());
                 return Intermediate.getData();
     }
 
