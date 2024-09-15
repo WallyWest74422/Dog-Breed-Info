@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
+@CrossOrigin
 public class HomeController {
 
     @ResponseStatus(HttpStatus.MOVED_PERMANENTLY)
